@@ -1,2 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css"
+$primary: #42b4ca;
+$secondary: #000000;
+
+$fontType-primary: 'Inter', sans-serif;
+
+$utilities: (
+  "viewport-height": (
+    property: height,
+    class: vh,
+    values: (
+      10: 10vh, 
+      15: 15vh, 
+      100: 100vh
+    )
+  )
+);
+
+@import "bootstrap/scss/bootstrap";
+
+
+html {
+  font-size: 16px;
+}
+body {
+  background-color: $secondary;
+  color: $white;
+}

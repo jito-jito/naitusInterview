@@ -1,0 +1,10 @@
+@import '../../../styles.scss';
+
+.nav {
+  &-item {
+    .nav-link {
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+    }
+  }
+}

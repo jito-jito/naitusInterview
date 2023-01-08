@@ -1,0 +1,14 @@
+<header class="header vh-10">
+  <ul class="container nav nav-pills  d-flex justify-content-center justify-content-md-start  align-items-center h-100 p-3">
+    <li class="nav-item" *ngFor="let link of links">
+      <a
+        class="nav-link rounded-5 text-capitalize text-white fs-6" 
+        aria-current="page" 
+        [routerLink]="link" 
+        [routerLinkActive]="['active', 'bg-primary', 'text-decoration-none', 'fw-normal']"
+      >
+        {{ link }}
+      </a>
+    </li>
+  </ul>
+</header>
