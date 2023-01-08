@@ -1,9 +1,43 @@
 $primary: #42b4ca;
 $secondary: #000000;
+$colorfont-dark: #152536;
 
+$body-bg: $secondary;
 $fontType-primary: 'Inter', sans-serif;
 
+$position-values: (
+  0: 0,
+  5: 5%,
+  10: 10%,
+  15: 15%,
+  20: 20%,
+  25: 25%,
+  50: 50%,
+  100: 100%
+) ;
+
 $utilities: (
+  "width": (
+    property: width,
+    class: w,
+    responsive: true,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      100: 100%,
+      auto: auto
+    )
+  ),
+  "max-width": (
+    property: max-width,
+    class: mw,
+    responsive: true,
+    values: (
+      50: 50%,
+      100: 100%
+    )
+  ),
   "viewport-height": (
     property: height,
     class: vh,
@@ -22,6 +56,6 @@ html {
   font-size: 16px;
 }
 body {
-  background-color: $secondary;
+  font-family: $fontType-primary;
   color: $white;
 }

@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+
+.selectedCharacter {
+  &-imgContainer {
+    width: 75px;
+    height: 75px;
+  
+    img {
+      width: inherit;
+      height: inherit;
+    }
+  }
+
+  &-name {
+    color: $colorfont-dark;
+  }
+
+}

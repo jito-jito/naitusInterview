@@ -8,6 +8,8 @@ import { CharacterComponent } from './components/character/character.component';
 import { EpisodeComponent } from './components/episode/episode.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { EpisodesComponent } from './pages/episodes/episodes.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { EpisodesComponent } from './pages/episodes/episodes.component';
     CharacterComponent,
     EpisodeComponent,
     CharactersComponent,
-    EpisodesComponent
+    EpisodesComponent,
+    HeroComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
