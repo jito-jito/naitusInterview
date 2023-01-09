@@ -1,0 +1,34 @@
+<app-hero></app-hero>
+
+<div class="bg-primary">
+  <div class="container p-4">
+    <h3 class="page-title text-capitalize text-center text-md-start py-3 fw-bold m-0 fs-4">episodios</h3>
+  </div>
+</div>
+
+<div class="container py-5">  
+  <div *ngIf="episodes.length > 0" class="row row-cols-md-2 justify-content-center gy-4">
+    <app-episode [@fadeInOut] *ngFor="let episode of episodes" [episode]="episode" class="col-12 col-md-4">
+    </app-episode>
+  </div>
+  
+  <!-- loading state -->
+  <h1  class="text-black  fw-bold text-center mt-3" *ngIf="loading">Cargando...</h1>  
+  <!-- error, no more results state -->
+  <h5 [@fadeInOut] class="text-success text-center fw-bold py-5" *ngIf="error === 'no more results'">No hay más resultados disponibles</h5>
+</div>
+
+<div [@fadeInOut] *ngIf="!loading && !error && episodes.length > 0" class="container d-flex justify-content-center mb-5">
+  <app-button (click)="loadMore()"></app-button>
+</div>
+
+<!-- error states -->
+<div [@fadeInOut] *ngIf="error && error !== 'no more results'" class="error container d-flex flex-column align-items-center py-5">
+  <figure class="error-img">
+    <img class="img-fluid" src="../../../assets/rick-error.png" alt="">
+  </figure>
+  <div [ngSwitch]="error" class="container d-flex align-items-center justify-content-center">
+    <h3  *ngSwitchCase="'Problemas de connexion'" class="error-title text-black fw-bold text-center mt-3 mw-lg-50">Parece que tienes problemas con tu conexión a internet, intenta de nuevo más tarde.</h3>
+    <h3  *ngSwitchCase="'unknown error'" class="error-title text-black fw-bold text-center mt-3 mw-lg-50">Hubo un error en obtener los datos, intenta de nuevo más tarde.</h3>
+  </div>
+</div>

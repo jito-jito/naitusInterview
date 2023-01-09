@@ -1,0 +1,11 @@
+@import '../../../styles.scss';
+
+.page-title {
+  color: $colorfont-dark;
+}
+
+.error {
+  &-img {
+    max-width: 300px;
+  }
+}

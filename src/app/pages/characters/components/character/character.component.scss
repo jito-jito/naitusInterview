@@ -1,0 +1,12 @@
+.card {
+  min-width: 190px;
+  max-width: 290px;
+
+  &:hover {
+    cursor: pointer;
+  }
+  &-img-top {
+    min-width: 190px;
+    max-width: 290px;
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../../../../styles.scss';
+
+.search {
+  &-title {
+    color: $colorfont-dark;
+  }
+  &-input, &-selectInput {
+    height: 60px;
+  }
+  &-input-icon:hover, &-selectInput:hover {
+    cursor: pointer;
+  }
+}

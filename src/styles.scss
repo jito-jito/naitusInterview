@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #42b4ca;
+$secondary: #000000;
+$colorfont-dark: #152536;
+
+$body-bg: #ededed;
+
+$fontType-primary: 'Inter', sans-serif;
+
+$position-values: (
+  0: 0,
+  5: 5%,
+  10: 10%,
+  15: 15%,
+  20: 20%,
+  25: 25%,
+  50: 50%,
+  100: 100%
+) ;
+
+$utilities: (
+  "width": (
+    property: width,
+    class: w,
+    responsive: true,
+    values: (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      100: 100%,
+      auto: auto
+    )
+  ),
+  "max-width": (
+    property: max-width,
+    class: mw,
+    responsive: true,
+    values: (
+      25: 25%,
+      50: 50%,
+      100: 100%
+    )
+  ),
+  "viewport-height": (
+    property: height,
+    class: vh,
+    values: (
+      10: 10vh, 
+      15: 15vh, 
+      100: 100vh
+    )
+  )
+);
+
+@import "bootstrap/scss/bootstrap";
+
+html {
+  font-size: 16px;
+}
+body {
+  
+  font-family: $fontType-primary;
+  color: $white;
+}
