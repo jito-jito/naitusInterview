@@ -2,7 +2,8 @@ $primary: #42b4ca;
 $secondary: #000000;
 $colorfont-dark: #152536;
 
-$body-bg: $secondary;
+$body-bg: #ededed;
+
 $fontType-primary: 'Inter', sans-serif;
 
 $position-values: (
@@ -56,6 +57,7 @@ html {
   font-size: 16px;
 }
 body {
+  
   font-family: $fontType-primary;
   color: $white;
 }

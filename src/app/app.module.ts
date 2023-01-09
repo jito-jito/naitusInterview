@@ -10,6 +10,7 @@ import { CharactersComponent } from './pages/characters/characters.component';
 import { EpisodesComponent } from './pages/episodes/episodes.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SearchComponent } from './components/search/search.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchComponent } from './components/search/search.component';
     CharactersComponent,
     EpisodesComponent,
     HeroComponent,
-    SearchComponent
+    SearchComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
