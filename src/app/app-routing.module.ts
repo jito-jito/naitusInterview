@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CharactersComponent } from './pages/characters/characters.component';
-import { EpisodesComponent } from './pages/episodes/episodes.component';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+
 
 const routes: Routes = [
   {
@@ -13,17 +12,19 @@ const routes: Routes = [
   {
     path: 'personajes',
     title: 'Rick&Morty',
-    component: CharactersComponent
+    loadChildren: () => import('./pages/characters/characters.module').then(m => m.CharactersModule)
   },
   {
     path: 'episodios',
     title: 'Rick&Morty',
-    component: EpisodesComponent
+    loadChildren: () => import('./pages/episodes/episodes.module').then(m => m.EpisodesModule)
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  }) ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

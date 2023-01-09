@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
-import { PaginationService } from 'src/app/services/pagination.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { PaginationService } from 'src/app/shared/services/pagination.service';
 import { transition, trigger, style, animate, query } from '@angular/animations';
 import { Character } from 'src/app/models/api.model';
 
