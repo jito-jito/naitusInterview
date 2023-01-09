@@ -7,23 +7,23 @@
 </div>
 
 <div class="container py-5">  
-  <div class="row row-cols-md-2 justify-content-center gy-4">
-    <app-episode *ngFor="let episode of episodes" [episode]="episode" class="col-12 col-md-4">
+  <div *ngIf="episodes.length > 0" class="row row-cols-md-2 justify-content-center gy-4">
+    <app-episode [@fadeInOut] *ngFor="let episode of episodes" [episode]="episode" class="col-12 col-md-4">
     </app-episode>
   </div>
   
   <!-- loading state -->
-  <h1 class="text-black  fw-bold text-center mt-3" *ngIf="loading">Cargando...</h1>  
+  <h1  class="text-black  fw-bold text-center mt-3" *ngIf="loading">Cargando...</h1>  
   <!-- error, no more results state -->
-  <h5 class="text-success text-center fw-bold py-5" *ngIf="error === 'no more results'">No hay más resultados disponibles</h5>
+  <h5 [@fadeInOut] class="text-success text-center fw-bold py-5" *ngIf="error === 'no more results'">No hay más resultados disponibles</h5>
 </div>
 
-<div *ngIf="!loading && !error && episodes.length > 0" class="container d-flex justify-content-center mb-5">
+<div [@fadeInOut] *ngIf="!loading && !error && episodes.length > 0" class="container d-flex justify-content-center mb-5">
   <app-button (click)="loadMore()"></app-button>
 </div>
 
 <!-- error states -->
-<div *ngIf="error && error !== 'no more results'" class="error container d-flex flex-column align-items-center py-5">
+<div [@fadeInOut] *ngIf="error && error !== 'no more results'" class="error container d-flex flex-column align-items-center py-5">
   <figure class="error-img">
     <img class="img-fluid" src="../../../assets/rick-error.png" alt="">
   </figure>

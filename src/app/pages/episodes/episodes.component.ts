@@ -1,12 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service'
-import { PaginationService } from '../../services/pagination.service'
+import { ApiService } from '../../services/api.service';
+import { PaginationService } from '../../services/pagination.service';
+import { transition, trigger, style, animate, query } from '@angular/animations';
 import { Episode } from 'src/app/models/api.model';
 
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes.component.html',
-  styleUrls: ['./episodes.component.scss']
+  styleUrls: ['./episodes.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        query(':self', style({ opacity: 0 })),
+        query(':self', animate('200ms', style({ opacity: 1 })) )
+        
+      ]),
+      transition(':leave', [
+        query(':self', style({ opacity: 1 }) ),
+        query(':self', animate('200ms', style({ opacity: 0 })) )
+      ])
+    ])
+  ]
 })
 export class EpisodesComponent implements OnInit {
 
@@ -56,8 +70,12 @@ export class EpisodesComponent implements OnInit {
     if(nextPage === null) {
       this.getEpisodes()
     } else {
-      this.episodes = [...this.episodes, ...nextPage.data] as Episode[]
-      this.offset = nextPage.dataAdded
+      setTimeout(() => {
+        this.loading = false
+        this.episodes = [...this.episodes, ...nextPage.data] as Episode[]
+        this.offset = nextPage.dataAdded
+      }, 200)
+    
     }
   }
 

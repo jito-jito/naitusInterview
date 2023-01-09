@@ -1,12 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { PaginationService } from 'src/app/services/pagination.service';
+import { transition, trigger, style, animate, query } from '@angular/animations';
 import { Character } from 'src/app/models/api.model';
 
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
-  styleUrls: ['./characters.component.scss']
+  styleUrls: ['./characters.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        query(':self', style({ opacity: 0 })),
+        query(':self', animate('200ms', style({ opacity: 1 })) )
+        
+      ]),
+      transition(':leave', [
+        query(':self', style({ opacity: 1 }) ),
+        query(':self', animate('200ms', style({ opacity: 0 })) )
+      ])
+    ])
+  ]
 })
 export class CharactersComponent implements OnInit {
   totalResults: Character[] = []
@@ -16,7 +30,7 @@ export class CharactersComponent implements OnInit {
   limit: number = 8
   offset: number = 0
   nextPage: '' | string | null = ''
-  
+  showAnimation: boolean = false
   loading: boolean = false
   error: boolean | string = false
 
@@ -43,7 +57,7 @@ export class CharactersComponent implements OnInit {
           this.nextPage = data.info.next as string
 
           this.loadMore()
-          this.loading = false
+         
         },
         error: (error) => { 
           this.loading = false
@@ -80,8 +94,11 @@ export class CharactersComponent implements OnInit {
     if(nextPage === null) {
       this.getCharacters()
     } else {
-      this.characters = [...this.characters, ...nextPage.data] as Character[]
-      this.offset = nextPage.dataAdded
+      setTimeout(() => {
+        this.loading = false
+        this.characters = [...this.characters, ...nextPage.data] as Character[]
+        this.offset = nextPage.dataAdded
+      }, 200)
     }
   }
 
