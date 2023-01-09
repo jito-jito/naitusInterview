@@ -1,9 +1,9 @@
 <div class="card border-0 rounded-3 rounded-bottom bg-secondary" >
-  <img src="../../../assets/238.png" class="card-img-top" alt="...">
+  <img src="{{ character.image }}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h4 class="card-title fw-bold">Rick Sanchez</h4>
-    <p class="card-text fw-bold my-3">Status</p>
-    <p class="card-text fw-bold my-3">Genero</p>
-    <p class="card-text fw-bold my-3">Origen</p>
+    <h4 class="card-title fw-bold">{{ character.name }}</h4>
+    <p class="card-text fw-bold my-3">Status: {{ character.status }}</p>
+    <p class="card-text fw-bold my-3">Genero: {{ character.gender }}</p>
+    <p class="card-text fw-bold my-3">Origen: {{ character.origin.name }}</p>
   </div>
 </div>

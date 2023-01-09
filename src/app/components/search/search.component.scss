@@ -7,4 +7,7 @@
   &-input, &-selectInput {
     height: 60px;
   }
+  &-input-icon:hover, &-selectInput:hover {
+    cursor: pointer;
+  }
 }

@@ -1,36 +1,46 @@
 <app-hero>
-  <div class="container">
-    <h1 *ngIf="!isLoading && characters.length > 0" class="text-capitalize text-center fw-normal h3 px-3 text-white" text>selecciona tu personaje favorito</h1>
+  <div class="container position-sticky">
+    <h1 *ngIf="!loading && characters.length > 0" class="text-capitalize text-center fw-normal h3 px-3 text-white" text>selecciona tu personaje favorito</h1>
     <div *ngIf="selectedCharacter" class="selectedCharacter-container container bg-white rounded-pill w-100 w-md-75 mw-lg-50 mt-4 p-1" >
       <div class="container d-flex align-items-center justify-content-start w-100  p-0">
         <figure class="selectedCharacter-imgContainer m-0 rounded-circle">
-          <img class="img-fluid rounded-circle" src="../../../assets/238.png" alt="">
+          <img class="img-fluid rounded-circle" [src]="selectedCharacter.image" alt="">
         </figure>
-        <h3 class="selectedCharacter-name m-0 ms-3 fw-bold">Nombre personaje</h3>
+        <h3 class="selectedCharacter-name m-0 ms-3 fw-bold">{{ selectedCharacter.name }}</h3>
       </div>
     </div>
   </div>
 </app-hero>
 
-<app-search>  
+<app-search (search)="searchResults($event)">  
 </app-search>
 
 <div class="characters-container">
-  <div class="container py-5">
+  <div *ngIf="characters.length > 0" class="container py-5">
     <div class="row row-cols-auto row-cols-sm-2  row-cols-lg-3 row-cols-xl-4 justify-content-center justify-content-sm-around justify-content-xl-between gx-5 gy-5">
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
-      <app-character class="col"></app-character>
+      <app-character *ngFor="let character of characters" [character]="character" (click)="selectCharacter(character)" class="col "></app-character>
     </div>
   </div>
+
+  <!-- loading state -->
+  <h1 class="text-black  fw-bold text-center py-5" *ngIf="loading">Cargando...</h1>
+ <!-- error, no more results state -->
+  <h5 class="text-success text-center fw-bold py-5" *ngIf="error === 'no more results'">No hay más resultados disponibles</h5>
 </div>
 
-<div class="container d-flex justify-content-center mb-5">
-  <app-button></app-button>
+<div *ngIf="!loading && !error && characters.length > 0"  class="container d-flex justify-content-center mb-5">
+  <app-button (click)="loadMore()"></app-button>
+</div>
+
+<!-- error states -->
+<div *ngIf="error && error !== 'no more results'" class="error container d-flex flex-column align-items-center py-5">
+  <figure class="error-img">
+    <img class="img-fluid" src="../../../assets/rick-error.png" alt="">
+  </figure>
+  <div [ngSwitch]="error" class="container d-flex align-items-center justify-content-center">
+    <h3  *ngSwitchCase="'Personaje no encontrado'" class="error-title text-black fw-bold text-center mt-3 mw-lg-50">No existen personajes con ese nombre, intenta de nuevo con un nombre distinto</h3>
+    <h3  *ngSwitchCase="'Problemas de connexion'" class="error-title text-black fw-bold text-center mt-3 mw-lg-50">Parece que tienes problemas con tu conexión a internet, intenta de nuevo más tarde.</h3>
+    <h3  *ngSwitchCase="'unknown error'" class="error-title text-black fw-bold text-center mt-3 mw-lg-50">Hubo un error en obtener los datos, intenta de nuevo más tarde.</h3>
+  </div>
 </div>
 

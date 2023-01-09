@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Episode } from 'src/app/models/api.model';
 
 @Component({
   selector: 'app-episode',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class EpisodeComponent {
 
+  @Input() episode: Episode = {
+    id: 0,
+    name: '',
+    episode: '',
+    air_date: ''
+  }
 }

@@ -3,14 +3,14 @@
     <h3 class="search-title text-capitalize mb-3 mb-md-0 fw-bold fs-4">personajes</h3>
     <form class="d-flex flex-column flex-md-row align-items-center justify-content-md-end flex-grow-1  w-100 ">
       <div class="search-containerInput container position-relative d-flex justify-content-md-end w-md-50 mb-3 m-md-0 me-md-3 p-0">
-        <input class="search-input form-control rounded-pill bg-white  px-4" type="text" placeholder="Buscar personaje por nombre" aria-label="Buscar personaje por nombre"> 
-        <img class="search-input-icon img-fluid position-absolute top-25 end-5" src="../../../assets/searchIcon.png" alt="">
+        <input [(ngModel)]="searchName" name="CharacterName" class="search-input form-control rounded-pill bg-white  px-4" type="text" placeholder="Buscar personaje por nombre" aria-label="Buscar personaje por nombre"> 
+        <img (click)="searchData()" class="search-input-icon img-fluid position-absolute top-25 end-5" src="../../../assets/searchIcon.png" alt="">
       </div>
-      <select class="search-selectInput form-select bg-white rounded-pill w-50 w-md-25 mb-3 mb-md-0 px-4" aria-label="Seleccionar status">
+      <select id="selectInput" class="search-selectInput form-select bg-white rounded-pill w-50 w-md-25 mb-3 mb-md-0 px-4" aria-label="Seleccionar status">
         <option selected>Status</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="alive">alive</option>
+        <option value="dead">dead </option>
+        <option value="unknown">unknown</option>
       </select>
     </form>
   </div>
