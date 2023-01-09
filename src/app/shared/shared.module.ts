@@ -5,13 +5,15 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { ButtonComponent } from './components/button/button.component';
+import { ScrollButtonComponent } from './scroll-button/scroll-button.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HeroComponent,
-    ButtonComponent
+    ButtonComponent,
+    ScrollButtonComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { ButtonComponent } from './components/button/button.component';
   exports: [
     HeaderComponent,
     HeroComponent,
-    ButtonComponent
+    ButtonComponent,
+    ScrollButtonComponent
   ]
 })
 export class SharedModule { }
