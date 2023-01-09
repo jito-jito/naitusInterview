@@ -1,4 +1,4 @@
-<app-hero></app-hero>
+<app-hero id="hero-episodes"></app-hero>
 
 <div class="bg-primary">
   <div class="container p-4">
@@ -21,6 +21,8 @@
 <div [@fadeInOut] *ngIf="!loading && !error && episodes.length > 0" class="container d-flex justify-content-center mb-5">
   <app-button (click)="loadMore()"></app-button>
 </div>
+
+<app-scroll-button [@fadeInOut] targetId="hero-episodes"></app-scroll-button>
 
 <!-- error states -->
 <div [@fadeInOut] *ngIf="error && error !== 'no more results'" class="error container d-flex flex-column align-items-center py-5">
